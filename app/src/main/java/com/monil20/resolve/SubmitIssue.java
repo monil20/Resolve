@@ -9,12 +9,17 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.RequiresApi;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -70,6 +75,7 @@ public class SubmitIssue extends AppCompatActivity implements
     String imgStr;
     int userId;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +90,11 @@ public class SubmitIssue extends AppCompatActivity implements
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
         service = retrofit.create(SSubmitIssue.class);
+
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorPrimaryDark));
 
         Call<String> data = service.getData();
         data.enqueue(new Callback<String>() {
@@ -170,7 +181,7 @@ public class SubmitIssue extends AppCompatActivity implements
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,typeArr);
+        ArrayAdapter aa = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_spinner_item,typeArr);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         type.setAdapter(aa);
     }

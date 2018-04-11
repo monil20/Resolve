@@ -84,7 +84,11 @@ public class Home extends Activity implements View.OnTouchListener
                 int tolerance = 25;
                 nextImage = R.drawable.homescreen;
                 if (ct.closeMatch (Color.RED, touchColor, tolerance)) toast ("Photo Frame Touched") ;
-                else if (ct.closeMatch (Color.rgb(4,46,167), touchColor, tolerance)) toast ("Desktop clicked");
+                else if (ct.closeMatch (Color.rgb(4,46,167), touchColor, tolerance)) {
+                    Intent intent = new Intent(getApplicationContext(),BrowseIssues.class);
+                    intent.putExtra("userId",userId+"");
+                    startActivity(intent);
+                }
                 else if (ct.closeMatch (Color.GREEN, touchColor, tolerance)) {
                     Intent intent = new Intent(getApplicationContext(),SubmitIssue.class);
                     intent.putExtra("userId",userId+"");
