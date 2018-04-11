@@ -29,25 +29,25 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:src="@drawable/ic_launcher_foreground"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.126"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@mipmap/ic_launcher_round"
                 card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toEndOf="parent"
                 card_view:layout_constraintHorizontal_bias="0.03"
-                card_view:layout_constraintVertical_bias="0.375" />
+                card_view:layout_constraintStart_toStartOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
                 android:layout_marginTop="16dp"
                 android:text="Title"
                 android:textSize="24dp"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintHorizontal_bias="0.08"
+                card_view:layout_constraintStart_toEndOf="@+id/imageView_issue"
                 card_view:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="140dp" />
+                android:layout_marginRight="8dp" />
 
             <TextView
                 android:id="@+id/textView_Status"
@@ -59,7 +59,8 @@
                 card_view:layout_constraintEnd_toEndOf="@+id/textView_title"
                 card_view:layout_constraintHorizontal_bias="0.109"
                 card_view:layout_constraintStart_toStartOf="@+id/textView_title"
-                card_view:layout_constraintTop_toBottomOf="@+id/textView_title" />
+                card_view:layout_constraintTop_toBottomOf="@+id/textView_title"
+                android:layout_marginLeft="8dp" />
 
             <TextView
                 android:id="@+id/textView_Date"
@@ -67,14 +68,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="TextView"
+                android:text="Date comes here..."
                 android:textSize="14dp"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="@+id/textView_Status"
                 card_view:layout_constraintHorizontal_bias="0.0"
                 card_view:layout_constraintStart_toStartOf="@+id/textView_Status"
                 card_view:layout_constraintTop_toBottomOf="@+id/textView_Status"
-                card_view:layout_constraintVertical_bias="0.0" />
+                card_view:layout_constraintVertical_bias="0.0"
+                android:layout_marginRight="8dp" />
 
         </android.support.constraint.ConstraintLayout>
 
