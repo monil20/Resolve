@@ -3944,7 +3944,7 @@ public final class R {
     public static final int ifRoom=0x7f090060;
     public static final int image=0x7f090061;
     public static final int image_areas=0x7f090062;
-    public static final int img=0x7f090063;
+    public static final int imageView_issue =0x7f090063;
     public static final int imgLogo=0x7f090064;
     public static final int info=0x7f090065;
     public static final int italic=0x7f090066;

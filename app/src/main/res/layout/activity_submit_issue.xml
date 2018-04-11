@@ -8,7 +8,7 @@
     tools:context="com.monil20.resolve.SubmitIssue">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img"
+        android:id="@+id/imageView_issue"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginEnd="8dp"
@@ -29,7 +29,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/img"
+        app:layout_constraintStart_toEndOf="@+id/imageView_issue"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
@@ -42,10 +42,10 @@
         android:layout_marginTop="8dp"
         android:text="Select Location"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="@+id/img"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_issue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.475"
-        app:layout_constraintStart_toEndOf="@+id/img"
+        app:layout_constraintStart_toEndOf="@+id/imageView_issue"
         app:layout_constraintTop_toBottomOf="@+id/type" />
 
     <EditText
@@ -93,7 +93,7 @@
         android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.153"
-        app:layout_constraintStart_toEndOf="@+id/img"
+        app:layout_constraintStart_toEndOf="@+id/imageView_issue"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -141,6 +141,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_issue" />
 
 </android.support.constraint.ConstraintLayout>

@@ -186,7 +186,7 @@ public class SubmitIssue extends AppCompatActivity implements
     private void initialize() {
         title = findViewById(R.id.title);
         desc  = findViewById(R.id.dsc);
-        img = findViewById(R.id.img);
+        img = findViewById(R.id.imageView_issue);
         type = findViewById(R.id.type);
         submit = findViewById(R.id.btnSubmit);
         map = findViewById(R.id.btnMap);
