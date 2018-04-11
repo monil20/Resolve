@@ -348,6 +348,10 @@ public class SubmitIssue extends AppCompatActivity implements
         if (data != null) {
             try {
                 bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
+                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+                bm.compress(Bitmap.CompressFormat.JPEG,100,bytes);
+                byte[] imgBytes = bytes.toByteArray();
+                imgStr = Base64.encodeToString(imgBytes,Base64.DEFAULT);
             } catch (IOException e) {
                 e.printStackTrace();
             }
