@@ -1,13 +1,350 @@
 package com.monil20.resolve;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class SubmitIssue extends AppCompatActivity {
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.monil20.resolve.services.SSubmitIssue;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
+
+public class SubmitIssue extends AppCompatActivity implements
+        OnMapReadyCallback,
+        GoogleMap.OnMarkerDragListener {
+
+    EditText desc;
+    ImageView img;
+    Spinner type;
+    Button submit, map, closeMapDialog;
+
+    private TextView locinfo;
+    Marker myMarker;
+    private GoogleMap mMap;
+    private android.location.LocationManager locationManager;
+
+    LatLng issueLoc;
+
+    final Context context = this;
+
+    SSubmitIssue service;
+
+    private int REQUEST_CAMERA = 0, SELECT_FILE = 1;
+    private String userChoosenTask;
+
+    String imgStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit_issue);
+        initialize();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.43.16/")
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .build();
+        service = retrofit.create(SSubmitIssue.class);
+
+        Call<String> data = service.getData();
+        data.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                try {
+                    JSONObject data = new JSONObject(response.body());
+                    setSpinner(data.getJSONArray("data"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
+
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectImage();
+            }
+        });
+
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog dialog = new Dialog(context,android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+                dialog.setContentView(R.layout.mapsdialog);
+                locinfo = dialog.findViewById(R.id.locinfo);
+                dialog.setTitle("Long press on the maps to add a marker. Long press on the marker to change location");
+                initializeMap();
+                closeMapDialog = dialog.findViewById(R.id.close);
+                closeMapDialog.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        map.setText("Location recorded");
+                    }
+                });
+                dialog.show();
+            }
+        });
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(getApplicationContext(),imgStr,Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(),type.getSelectedItem().toString(),Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(),issueLoc.latitude+"",Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(),issueLoc.longitude+"",Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(),desc.getText().toString().trim(),Toast.LENGTH_LONG).show();
+                Call<String> data = service.sendData(type.getSelectedItem().toString(),issueLoc.latitude,issueLoc.longitude,desc.getText().toString().trim());
+                data.enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+
+                    }
+                });
+                Toast.makeText(getApplicationContext(),"Issue submitted succesfully!",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(SubmitIssue.this,Home.class);
+                startActivity(intent);
+            }
+        });
+
     }
+
+    private void setSpinner(JSONArray listItems) {
+        String [] typeArr = new String[listItems.length()];
+        try {
+            for(int i = 0; i < listItems.length(); i++){
+                typeArr[i] = listItems.getJSONObject(i).getString("name");
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,typeArr);
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        type.setAdapter(aa);
+    }
+
+    private void initializeMap() {
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+    }
+
+    private void initialize() {
+        desc  = findViewById(R.id.desc);
+        img = findViewById(R.id.img);
+        type = findViewById(R.id.type);
+        submit = findViewById(R.id.btnSubmit);
+        map = findViewById(R.id.btnMap);
+
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        // Add a marker in Sydney, Australia,
+        // and move the map's camera to the same location.
+        mMap = googleMap;
+        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+                if (myMarker == null) {
+
+                    // Marker was not set yet. Add marker:
+                    myMarker = mMap.addMarker(new MarkerOptions()
+                            .position(latLng)
+                            .title("Your marker title")
+                            .snippet("Your marker snippet"));
+                    locinfo.setText(myMarker.getPosition().latitude+", "+myMarker.getPosition().longitude);
+                    issueLoc = new LatLng(myMarker.getPosition().latitude,myMarker.getPosition().longitude);
+                    myMarker.setDraggable(true);
+
+                }
+                else {
+
+                    // Marker already exists, just update it's position
+                    myMarker.setPosition(latLng);
+                    locinfo.setText(myMarker.getPosition().latitude+", "+myMarker.getPosition().longitude);
+                    issueLoc = new LatLng(myMarker.getPosition().latitude,myMarker.getPosition().longitude);
+
+                }
+            }
+        });
+        googleMap.setOnMarkerDragListener(this);
+        try {
+            googleMap.setMyLocationEnabled(true);
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onMarkerDragStart(Marker marker) {
+        locinfo.setText(marker.getPosition().latitude+", "+marker.getPosition().longitude);
+    }
+
+    @Override
+    public void onMarkerDrag(Marker marker) {
+        locinfo.setText(marker.getPosition().latitude+", "+marker.getPosition().longitude);
+    }
+
+    @Override
+    public void onMarkerDragEnd(Marker marker) {
+        locinfo.setText(marker.getPosition().latitude+", "+marker.getPosition().longitude);
+        issueLoc = new LatLng(myMarker.getPosition().latitude,myMarker.getPosition().longitude);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case Utility.MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if(userChoosenTask.equals("Take Photo"))
+                        cameraIntent();
+                    else if(userChoosenTask.equals("Choose from Library"))
+                        galleryIntent();
+                } else {
+                    //code for deny
+                }
+                break;
+        }
+    }
+
+    private void selectImage() {
+        final CharSequence[] items = { "Take Photo", "Choose from Library",
+                "Cancel" };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(SubmitIssue.this);
+        builder.setTitle("Add Photo!");
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                boolean result=Utility.checkPermission(SubmitIssue.this);
+
+                if (items[item].equals("Take Photo")) {
+                    userChoosenTask ="Take Photo";
+                    if(result)
+                        cameraIntent();
+
+                } else if (items[item].equals("Choose from Library")) {
+                    userChoosenTask ="Choose from Library";
+                    if(result)
+                        galleryIntent();
+
+                } else if (items[item].equals("Cancel")) {
+                    dialog.dismiss();
+                }
+            }
+        });
+        builder.show();
+    }
+
+    private void galleryIntent()
+    {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);//
+        startActivityForResult(Intent.createChooser(intent, "Select File"),SELECT_FILE);
+    }
+
+    private void cameraIntent()
+    {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, REQUEST_CAMERA);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == SELECT_FILE)
+                onSelectFromGalleryResult(data);
+            else if (requestCode == REQUEST_CAMERA)
+                onCaptureImageResult(data);
+        }
+    }
+
+    private void onCaptureImageResult(Intent data) {
+        Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        thumbnail.compress(Bitmap.CompressFormat.JPEG,100,bytes);
+        byte[] imgBytes = bytes.toByteArray();
+        imgStr = Base64.encodeToString(imgBytes,Base64.DEFAULT);
+        /*File destination = new File(Environment.getExternalStorageDirectory(),
+                System.currentTimeMillis() + ".jpg");
+
+        FileOutputStream fo;
+        try {
+            destination.createNewFile();
+            fo = new FileOutputStream(destination);
+            fo.write(bytes.toByteArray());
+            fo.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+
+        img.setImageBitmap(thumbnail);
+    }
+
+    @SuppressWarnings("deprecation")
+    private void onSelectFromGalleryResult(Intent data) {
+
+        Bitmap bm=null;
+        if (data != null) {
+            try {
+                bm = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), data.getData());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        img.setImageBitmap(bm);
+    }
+
 }

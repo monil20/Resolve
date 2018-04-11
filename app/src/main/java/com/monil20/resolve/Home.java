@@ -1,6 +1,7 @@
 package com.monil20.resolve;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -25,7 +26,7 @@ public class Home extends Activity implements View.OnTouchListener
         userId = Integer.parseInt(getIntent().getStringExtra("userId"));
         Toast.makeText(getApplicationContext(),userId+"", Toast.LENGTH_SHORT).show();
 
-        ImageView iv = (ImageView) findViewById (R.id.image);
+        ImageView iv = findViewById (R.id.image);
         if (iv != null) {
             iv.setOnTouchListener (this);
         }
@@ -84,7 +85,11 @@ public class Home extends Activity implements View.OnTouchListener
                 nextImage = R.drawable.homescreen;
                 if (ct.closeMatch (Color.RED, touchColor, tolerance)) toast ("Photo Frame Touched") ;
                 else if (ct.closeMatch (Color.rgb(4,46,167), touchColor, tolerance)) toast ("Desktop clicked");
-                else if (ct.closeMatch (Color.GREEN, touchColor, tolerance)) toast ("Add new Issue");
+                else if (ct.closeMatch (Color.GREEN, touchColor, tolerance)) {
+                    Intent intent = new Intent(getApplicationContext(),SubmitIssue.class);
+                    intent.putExtra("userId",userId+"");
+                    startActivity(intent);
+                }
                 else if (ct.closeMatch (Color.BLACK, touchColor, tolerance)) toast ("Books Clicked");
                 else if (ct.closeMatch (Color.GRAY, touchColor, tolerance)) toast ("Notification");
 
