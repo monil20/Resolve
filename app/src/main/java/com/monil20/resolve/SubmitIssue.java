@@ -8,6 +8,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,7 +27,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -58,7 +59,7 @@ public class SubmitIssue extends AppCompatActivity implements
     Spinner type;
     Button submit, map, closeMapDialog;
 
-    private TextView locinfo;
+//    private TextView locinfo;
     Marker myMarker;
     private GoogleMap mMap;
     private android.location.LocationManager locationManager;
@@ -124,10 +125,12 @@ public class SubmitIssue extends AppCompatActivity implements
         map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Dialog dialog = new Dialog(context,android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+                final Dialog dialog = new Dialog(context);
                 dialog.setContentView(R.layout.mapsdialog);
-                locinfo = dialog.findViewById(R.id.locinfo);
-                dialog.setTitle("Long press on the maps to add a marker. Long press on the marker to change location");
+                dialog.setTitle("Long press");
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                locinfo = dialog.findViewById(R.id.locinfo);
+//                dialog.setTitle("Long press on the maps to add a marker. Long press on the marker to change location");
                 initializeMap();
                 closeMapDialog = dialog.findViewById(R.id.close);
                 closeMapDialog.setOnClickListener(new View.OnClickListener() {
@@ -219,7 +222,7 @@ public class SubmitIssue extends AppCompatActivity implements
                             .position(latLng)
                             .title("Your marker title")
                             .snippet("Your marker snippet"));
-                    locinfo.setText(myMarker.getPosition().latitude+", "+myMarker.getPosition().longitude);
+//                    locinfo.setText(myMarker.getPosition().latitude+", "+myMarker.getPosition().longitude);
                     issueLoc = new LatLng(myMarker.getPosition().latitude,myMarker.getPosition().longitude);
                     myMarker.setDraggable(true);
 
@@ -228,7 +231,7 @@ public class SubmitIssue extends AppCompatActivity implements
 
                     // Marker already exists, just update it's position
                     myMarker.setPosition(latLng);
-                    locinfo.setText(myMarker.getPosition().latitude+", "+myMarker.getPosition().longitude);
+//                    locinfo.setText(myMarker.getPosition().latitude+", "+myMarker.getPosition().longitude);
                     issueLoc = new LatLng(myMarker.getPosition().latitude,myMarker.getPosition().longitude);
 
                 }
@@ -244,17 +247,17 @@ public class SubmitIssue extends AppCompatActivity implements
 
     @Override
     public void onMarkerDragStart(Marker marker) {
-        locinfo.setText(marker.getPosition().latitude+", "+marker.getPosition().longitude);
+//        locinfo.setText(marker.getPosition().latitude+", "+marker.getPosition().longitude);
     }
 
     @Override
     public void onMarkerDrag(Marker marker) {
-        locinfo.setText(marker.getPosition().latitude+", "+marker.getPosition().longitude);
+//        locinfo.setText(marker.getPosition().latitude+", "+marker.getPosition().longitude);
     }
 
     @Override
     public void onMarkerDragEnd(Marker marker) {
-        locinfo.setText(marker.getPosition().latitude+", "+marker.getPosition().longitude);
+//        locinfo.setText(marker.getPosition().latitude+", "+marker.getPosition().longitude);
         issueLoc = new LatLng(myMarker.getPosition().latitude,myMarker.getPosition().longitude);
     }
 
