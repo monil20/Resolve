@@ -2,10 +2,12 @@ package com.monil20.resolve;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 public class SplashScreen extends Activity {
 
@@ -19,6 +21,10 @@ public class SplashScreen extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash_screen);
+
+        Typeface typeface = Typeface.createFromAsset(getApplicationContext().getAssets(),"fonts/Raleway-Regular.ttf");
+        TextView textView = findViewById(R.id.textView_appName);
+        textView.setTypeface(typeface);
 
         new Handler().postDelayed(new Runnable() {
 
