@@ -174,9 +174,9 @@ ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManif
 	android:name
 		ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:48:13-40
 activity#com.monil20.resolve.MyCases
-ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:51:9-54:68
-	android:label
-		ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:53:13-60
+ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:51:9-54:59
+	android:screenOrientation
+		ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:53:13-49
 	android:theme
 		ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:54:13-56
 	android:name
