@@ -15,7 +15,9 @@ public interface SSubmitIssue {
     Call<String> sendData(@Field("itype") String itype,
                           @Field("lat") double lat,
                           @Field("lng") double lng,
-                          @Field("dsc") String dsc);
+                          @Field("dsc") String dsc,
+                          @Field("userId") int userId,
+                          @Field("img") String img);
 
     @POST("/CodeTechnica/getIssueTypes.php")
     Call<String> getData();

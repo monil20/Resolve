@@ -55,6 +55,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/bubble"
         android:gravity="center_vertical"
         android:inputType="text"

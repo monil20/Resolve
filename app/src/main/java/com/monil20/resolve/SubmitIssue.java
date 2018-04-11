@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -67,11 +68,15 @@ public class SubmitIssue extends AppCompatActivity implements
     private String userChoosenTask;
 
     String imgStr;
+    int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit_issue);
+
+        userId = Integer.parseInt(getIntent().getStringExtra("userId"));
+
         initialize();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -133,19 +138,23 @@ public class SubmitIssue extends AppCompatActivity implements
 //                Toast.makeText(getApplicationContext(),issueLoc.latitude+"",Toast.LENGTH_LONG).show();
 //                Toast.makeText(getApplicationContext(),issueLoc.longitude+"",Toast.LENGTH_LONG).show();
 //                Toast.makeText(getApplicationContext(),desc.getText().toString().trim(),Toast.LENGTH_LONG).show();
-                Call<String> data = service.sendData(type.getSelectedItem().toString(),issueLoc.latitude,issueLoc.longitude,desc.getText().toString().trim());
+                Call<String> data = service.sendData(type.getSelectedItem().toString(),issueLoc.latitude,issueLoc.longitude,desc.getText().toString().trim(),userId, imgStr);
                 data.enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
+//                        Toast.makeText(getApplicationContext(),response.body().toString(),Toast.LENGTH_LONG).show();
+                        Log.d("XXX",response.body().toString());
                     }
 
                     @Override
                     public void onFailure(Call<String> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(),"failed",Toast.LENGTH_LONG).show();
 
                     }
                 });
                 Toast.makeText(getApplicationContext(),"Issue submitted succesfully!",Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SubmitIssue.this,Home.class);
+                intent.putExtra("userId",userId+"");
                 startActivity(intent);
             }
         });

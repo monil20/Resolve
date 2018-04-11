@@ -488,12 +488,12 @@
         "source": "/home/monil20/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/08bb198f9f1a89af2648e560c3d56495/res/drawable-xhdpi-v4/abc_list_pressed_holo_dark.9.png"
     },
     {
-        "merged": "/home/monil20/AndroidStudioProjects/Resolve/app/build/intermediates/res/merged/debug/color_abc_tint_default.xml.flat",
-        "source": "/home/monil20/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/08bb198f9f1a89af2648e560c3d56495/res/color/abc_tint_default.xml"
-    },
-    {
         "merged": "/home/monil20/AndroidStudioProjects/Resolve/app/build/intermediates/res/merged/debug/color_design_error.xml.flat",
         "source": "/home/monil20/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/1c633868985ba3f9364f8e3dae1b05d5/res/color/design_error.xml"
+    },
+    {
+        "merged": "/home/monil20/AndroidStudioProjects/Resolve/app/build/intermediates/res/merged/debug/color_abc_tint_default.xml.flat",
+        "source": "/home/monil20/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/08bb198f9f1a89af2648e560c3d56495/res/color/abc_tint_default.xml"
     },
     {
         "merged": "/home/monil20/AndroidStudioProjects/Resolve/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
@@ -1146,6 +1146,10 @@
     {
         "merged": "/home/monil20/AndroidStudioProjects/Resolve/app/build/intermediates/res/merged/debug/drawable_abc_list_selector_background_transition_holo_dark.xml.flat",
         "source": "/home/monil20/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/08bb198f9f1a89af2648e560c3d56495/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "/home/monil20/AndroidStudioProjects/Resolve/app/build/intermediates/res/merged/debug/layout_mapsdialog.xml.flat",
+        "source": "/home/monil20/AndroidStudioProjects/Resolve/app/src/main/res/layout/mapsdialog.xml"
     },
     {
         "merged": "/home/monil20/AndroidStudioProjects/Resolve/app/build/intermediates/res/merged/debug/drawable_common_google_signin_btn_icon_disabled.xml.flat",
