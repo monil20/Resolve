@@ -90,7 +90,11 @@ public class Home extends Activity implements View.OnTouchListener
                     intent.putExtra("userId",userId+"");
                     startActivity(intent);
                 }
-                else if (ct.closeMatch (Color.BLACK, touchColor, tolerance)) toast ("Books Clicked");
+                else if (ct.closeMatch (Color.BLACK, touchColor, tolerance)) {
+                    Intent intent = new Intent(getApplicationContext(),MyCases.class);
+                    intent.putExtra("userId",userId+"");
+                    startActivity(intent);
+                }
                 else if (ct.closeMatch (Color.GRAY, touchColor, tolerance)) toast ("Notification");
 
                 // If the next image is the same as the last image, go back to the default.

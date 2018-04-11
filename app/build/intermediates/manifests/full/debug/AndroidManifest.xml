@@ -61,6 +61,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name="com.monil20.resolve.MyCases"
+            android:label="@string/title_activity_my_cases"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name="com.google.android.gms.common.api.GoogleApiActivity"
             android:exported="false"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />

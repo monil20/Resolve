@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:1-53:12
-INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:1-53:12
-INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:1-53:12
-INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:1-53:12
+ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:1-57:12
+INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:1-57:12
+INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:1-57:12
+INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:1-57:12
 MERGED from [com.android.databinding:adapters:1.3.1] /home/monil20/.gradle/caches/transforms-1/files-1.1/adapters-1.3.1.aar/199c8de63de1d694a36f240fa5d89918/AndroidManifest.xml:17:1-26:12
 MERGED from [com.android.databinding:library:1.3.1] /home/monil20/.gradle/caches/transforms-1/files-1.1/library-1.3.1.aar/d097dd58d7b50257df50d17db67ac582/AndroidManifest.xml:17:1-26:12
 MERGED from [com.android.support:design:27.0.2] /home/monil20/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/1c633868985ba3f9364f8e3dae1b05d5/AndroidManifest.xml:17:1-22:12
@@ -30,20 +30,20 @@ MERGED from [android.arch.lifecycle:runtime:1.0.3] /home/monil20/.gradle/caches/
 MERGED from [com.google.android.gms:play-services-base-license:11.8.0] /home/monil20/.gradle/caches/transforms-1/files-1.1/play-services-base-license-11.8.0.aar/42b3774bc4a72a8653b2c0cdb12b7017/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-basement-license:11.8.0] /home/monil20/.gradle/caches/transforms-1/files-1.1/play-services-basement-license-11.8.0.aar/849582c4c6c0bdc911891a816cca392b/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /home/monil20/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/6d03333e01db43efdf68b007e2d44422/AndroidManifest.xml:2:1-6:12
-INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:1-53:12
-INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:1-53:12
-INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:1-53:12
+INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:1-57:12
+INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:1-57:12
+INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:1-57:12
 	package
 		ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:3:5-34
 		INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml
 		INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml
-		ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:1-53:12
+		ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:1-57:12
 		INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml
-		ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:1-53:12
+		ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:1-57:12
 		INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:2:11-69
@@ -84,7 +84,7 @@ ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManif
 	android:name
 		ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:12:22-96
 application
-ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:14:5-51:19
+ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:14:5-55:19
 MERGED from [com.google.android.gms:play-services-maps:11.8.0] /home/monil20/.gradle/caches/transforms-1/files-1.1/play-services-maps-11.8.0.aar/85981790efa00888c85b88638170cdee/AndroidManifest.xml:30:5-20
 MERGED from [com.google.android.gms:play-services-maps:11.8.0] /home/monil20/.gradle/caches/transforms-1/files-1.1/play-services-maps-11.8.0.aar/85981790efa00888c85b88638170cdee/AndroidManifest.xml:30:5-20
 MERGED from [com.google.android.gms:play-services-base:11.8.0] /home/monil20/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/910b9c62cc79d6b6dec763c6c21cbbce/AndroidManifest.xml:22:5-27:19
@@ -173,6 +173,14 @@ ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManif
 		ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:50:13-56
 	android:name
 		ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:48:13-40
+activity#com.monil20.resolve.MyCases
+ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:51:9-54:68
+	android:label
+		ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:53:13-60
+	android:theme
+		ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:54:13-56
+	android:name
+		ADDED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml:52:13-36
 uses-sdk
 INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/monil20/AndroidStudioProjects/Resolve/app/src/main/AndroidManifest.xml

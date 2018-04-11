@@ -17,7 +17,8 @@ public interface SSubmitIssue {
                           @Field("lng") double lng,
                           @Field("dsc") String dsc,
                           @Field("userId") int userId,
-                          @Field("img") String img);
+                          @Field("img") String img,
+                          @Field("title") String title);
 
     @POST("/CodeTechnica/getIssueTypes.php")
     Call<String> getData();

@@ -48,7 +48,7 @@ public class SubmitIssue extends AppCompatActivity implements
         OnMapReadyCallback,
         GoogleMap.OnMarkerDragListener {
 
-    EditText desc;
+    EditText desc, title;
     ImageView img;
     Spinner type;
     Button submit, map, closeMapDialog;
@@ -138,7 +138,7 @@ public class SubmitIssue extends AppCompatActivity implements
 //                Toast.makeText(getApplicationContext(),issueLoc.latitude+"",Toast.LENGTH_LONG).show();
 //                Toast.makeText(getApplicationContext(),issueLoc.longitude+"",Toast.LENGTH_LONG).show();
 //                Toast.makeText(getApplicationContext(),desc.getText().toString().trim(),Toast.LENGTH_LONG).show();
-                Call<String> data = service.sendData(type.getSelectedItem().toString(),issueLoc.latitude,issueLoc.longitude,desc.getText().toString().trim(),userId, imgStr);
+                Call<String> data = service.sendData(type.getSelectedItem().toString(),issueLoc.latitude,issueLoc.longitude,desc.getText().toString().trim(),userId, imgStr, title.getText().toString().trim());
                 data.enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
@@ -184,7 +184,8 @@ public class SubmitIssue extends AppCompatActivity implements
     }
 
     private void initialize() {
-        desc  = findViewById(R.id.desc);
+        title = findViewById(R.id.title);
+        desc  = findViewById(R.id.dsc);
         img = findViewById(R.id.img);
         type = findViewById(R.id.type);
         submit = findViewById(R.id.btnSubmit);
