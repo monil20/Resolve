@@ -270,8 +270,8 @@ public class SingleIssue extends AppCompatActivity {
 //            Toast.makeText(getApplicationContext(),String.valueOf(listItems.length()),Toast.LENGTH_SHORT).show();
             for(int i = 0; i < listItems.length(); i++){
                 if(listItems.getJSONObject(i).getInt("issueId") == issueId){
-                    issueType.setText(listItems.getJSONObject(i).getInt("type")+"");
-                    issueSubmittedBy.setText(listItems.getJSONObject(i).getInt("userId")+"");
+                    issueType.setText(listItems.getJSONObject(i).getString("type")+"");
+                    issueSubmittedBy.setText(listItems.getJSONObject(i).getString("userId")+"");
                     issueDsc.setText(listItems.getJSONObject(i).getString("dsc")+"");
                     String img = listItems.getJSONObject(i).getString("img");
                     byte[] decodedBytes = Base64.decode(img, 0);
@@ -297,4 +297,3 @@ public class SingleIssue extends AppCompatActivity {
         commenttext = findViewById(R.id.newcomment);
     }
 }
-
