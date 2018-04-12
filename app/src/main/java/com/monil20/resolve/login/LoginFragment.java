@@ -82,7 +82,10 @@ public class LoginFragment extends Fragment implements com.monil20.resolve.login
             if(listItems.getJSONObject(i).getString("uname").equals(uname) && listItems.getJSONObject(i).getString("pwd").equals(pwd)){
                 intent = new Intent( getContext() , com.monil20.resolve.Home.class);
                 intent.putExtra("userId",listItems.getJSONObject(i).getInt("id")+"");
+                editText.setText("");
+                editText2.setText("");
                 startActivity(intent);
+                getActivity().finish();
                 return;
             }
         }

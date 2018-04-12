@@ -13,6 +13,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
@@ -173,6 +174,18 @@ public class SubmitIssue extends AppCompatActivity implements
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                finish();
+            }
+        }, 2000);
     }
 
     private void setSpinner(JSONArray listItems) {

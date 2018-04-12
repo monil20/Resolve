@@ -3,6 +3,7 @@ package com.monil20.resolve;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
@@ -113,5 +114,15 @@ public class MyCases extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
 
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                finish();
+            }
+        }, 2000);
+    }
 }

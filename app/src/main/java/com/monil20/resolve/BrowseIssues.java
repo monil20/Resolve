@@ -13,6 +13,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
@@ -357,6 +358,18 @@ public class BrowseIssues extends AppCompatActivity implements OnMapReadyCallbac
                 .setNegativeButton("Cancel", null)
                 .create()
                 .show();
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                finish();
+            }
+        }, 2000);
     }
 
 }

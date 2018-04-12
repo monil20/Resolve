@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
@@ -295,5 +296,17 @@ public class SingleIssue extends AppCompatActivity {
         votes = findViewById(R.id.votecount);
         add = findViewById(R.id.add);
         commenttext = findViewById(R.id.newcomment);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                finish();
+            }
+        }, 2000);
     }
 }
