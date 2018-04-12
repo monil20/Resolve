@@ -168,6 +168,10 @@
         "source": "/home/monil20/.gradle/caches/transforms-1/files-1.1/play-services-base-11.8.0.aar/910b9c62cc79d6b6dec763c6c21cbbce/res/drawable-mdpi-v4/common_google_signin_btn_text_light_normal_background.9.png"
     },
     {
+        "merged": "/home/monil20/AndroidStudioProjects/Resolve/app/build/intermediates/res/merged/debug/drawable_thumbs_down_red.png.flat",
+        "source": "/home/monil20/AndroidStudioProjects/Resolve/app/src/main/res/drawable/thumbs_down_red.png"
+    },
+    {
         "merged": "/home/monil20/AndroidStudioProjects/Resolve/app/build/intermediates/res/merged/debug/drawable_homescreen.jpg.flat",
         "source": "/home/monil20/AndroidStudioProjects/Resolve/app/src/main/res/drawable/homescreen.jpg"
     },
@@ -490,10 +494,6 @@
     {
         "merged": "/home/monil20/AndroidStudioProjects/Resolve/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
         "source": "/home/monil20/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/08bb198f9f1a89af2648e560c3d56495/res/drawable-xhdpi-v4/abc_list_pressed_holo_dark.9.png"
-    },
-    {
-        "merged": "/home/monil20/AndroidStudioProjects/Resolve/app/build/intermediates/res/merged/debug/drawable_thumps_down_red.png.flat",
-        "source": "/home/monil20/AndroidStudioProjects/Resolve/app/src/main/res/drawable/thumps_down_red.png"
     },
     {
         "merged": "/home/monil20/AndroidStudioProjects/Resolve/app/build/intermediates/res/merged/debug/color_abc_tint_default.xml.flat",

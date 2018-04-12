@@ -1,14 +1,22 @@
 package com.monil20.resolve;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.RequiresApi;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -38,7 +46,7 @@ public class SingleIssue extends AppCompatActivity {
     int issueId,userId;
     int can_up = 1,can_down = 1;
     ImageView issueImg;
-    TextView issueType, issueSubmittedBy, issueDsc, votes;
+    TextView issueType, issueSubmittedBy, issueDsc, votes, textView5;
     EditText commenttext;
     Button add;
     ListView commentList;
@@ -51,15 +59,24 @@ public class SingleIssue extends AppCompatActivity {
 
     CommentsListAdapter adapter;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_issue);
 
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.colorPrimaryDark));
+
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
         Intent intent = getIntent();
         issueId = Integer.parseInt(intent.getStringExtra("issueId"));
         userId = Integer.parseInt(intent.getStringExtra("userId"));
         Toast.makeText(this,issueId+"",Toast.LENGTH_SHORT).show();
+
         initialize();
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -161,7 +178,7 @@ public class SingleIssue extends AppCompatActivity {
                         down.setImageResource(R.drawable.thumbs_down);
                     }
                     else
-                        down.setImageResource(R.drawable.thumps_down_red);
+                        down.setImageResource(R.drawable.thumbs_down_red);
                     can_down--;
                     can_up++;
                 }
@@ -184,6 +201,13 @@ public class SingleIssue extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
                         Log.d("XXX",response.body());
+                        initComments();
+                        View view = getCurrentFocus();
+                        if (view != null) {
+                            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                        }
+                        commenttext.setText("");
                     }
 
                     @Override
@@ -272,7 +296,7 @@ public class SingleIssue extends AppCompatActivity {
             for(int i = 0; i < listItems.length(); i++){
                 if(listItems.getJSONObject(i).getInt("issueId") == issueId){
                     issueType.setText(listItems.getJSONObject(i).getString("type")+"");
-                    issueSubmittedBy.setText(listItems.getJSONObject(i).getString("userId")+"");
+                    issueSubmittedBy.setText("Submitted by: "+listItems.getJSONObject(i).getString("userId")+"");
                     issueDsc.setText(listItems.getJSONObject(i).getString("dsc")+"");
                     String img = listItems.getJSONObject(i).getString("img");
                     byte[] decodedBytes = Base64.decode(img, 0);
@@ -296,6 +320,17 @@ public class SingleIssue extends AppCompatActivity {
         votes = findViewById(R.id.votecount);
         add = findViewById(R.id.add);
         commenttext = findViewById(R.id.newcomment);
+        textView5 = findViewById(R.id.textView5);
+
+        Typeface typeface = Typeface.createFromAsset(getApplicationContext().getAssets(),"fonts/Raleway-Regular.ttf");
+        issueType.setTypeface(typeface);
+        issueSubmittedBy.setTypeface(typeface);
+        issueDsc.setTypeface(typeface);
+        votes.setTypeface(typeface);
+        add.setTypeface(typeface);
+        commenttext.setTypeface(typeface);
+        textView5.setTypeface(typeface);
+
     }
 
     @Override
