@@ -369,7 +369,7 @@ public class BrowseIssues extends AppCompatActivity implements OnMapReadyCallbac
             public void run() {
                 finish();
             }
-        }, 2000);
+        },0);
     }
 
 }

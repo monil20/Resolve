@@ -2,6 +2,7 @@ package com.monil20.resolve.login;
 
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.monil20.resolve.R;
@@ -29,6 +31,7 @@ public class LoginFragment extends Fragment implements com.monil20.resolve.login
     SLogin service;
     String uname, pwd;
     Intent intent;
+    TextView forgotPass;
 
     private static final String TAG = "LoginFragment";
 
@@ -40,10 +43,16 @@ public class LoginFragment extends Fragment implements com.monil20.resolve.login
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View inflate = inflater.inflate(R.layout.fragment_login, container, false);
-        inflate.findViewById(R.id.forgot_password).setOnClickListener(v ->
-                Toast.makeText(getContext(), "Forgot password clicked", Toast.LENGTH_SHORT).show());
+
+        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(),"fonts/Raleway-Regular.ttf");
+
+        forgotPass = inflate.findViewById(R.id.forgot_password);
         editText = inflate.findViewById(R.id.uname);
         editText2 = inflate.findViewById(R.id.pwd);
+
+        forgotPass.setTypeface(typeface);
+        editText.setTypeface(typeface);
+        editText2.setTypeface(typeface);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://192.168.43.16/")

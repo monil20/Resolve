@@ -123,6 +123,6 @@ public class MyCases extends AppCompatActivity {
             public void run() {
                 finish();
             }
-        }, 2000);
+        }, 0);
     }
 }

@@ -342,6 +342,6 @@ public class SingleIssue extends AppCompatActivity {
             public void run() {
                 finish();
             }
-        }, 2000);
+        }, 0);
     }
 }

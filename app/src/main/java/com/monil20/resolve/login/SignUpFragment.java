@@ -1,5 +1,6 @@
 package com.monil20.resolve.login;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -32,11 +33,20 @@ public class SignUpFragment extends Fragment implements OnSignUpListener{
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View inflate = inflater.inflate(R.layout.fragment_signup, container, false);
+
+        Typeface typeface = Typeface.createFromAsset(getContext().getAssets(),"fonts/Raleway-Regular.ttf");
+
         fname = inflate.findViewById(R.id.fname);
         lname = inflate.findViewById(R.id.lname);
         uname = inflate.findViewById(R.id.uname);
         phone = inflate.findViewById(R.id.mob);
         pwd = inflate.findViewById(R.id.pwd);
+
+        fname.setTypeface(typeface);
+        lname.setTypeface(typeface);
+        uname.setTypeface(typeface);
+        phone.setTypeface(typeface);
+        pwd.setTypeface(typeface);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://192.168.43.16/")

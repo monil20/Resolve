@@ -189,7 +189,7 @@ public class SubmitIssue extends AppCompatActivity implements
             public void run() {
                 finish();
             }
-        }, 2000);
+        }, 0);
     }
 
     private void setSpinner(JSONArray listItems) {
