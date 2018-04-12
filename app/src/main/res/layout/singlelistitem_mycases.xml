@@ -40,27 +40,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="Title"
                 android:textSize="24dp"
                 card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintHorizontal_bias="0.08"
+                card_view:layout_constraintHorizontal_bias="0.169"
                 card_view:layout_constraintStart_toEndOf="@+id/imageView_issue"
-                card_view:layout_constraintTop_toTopOf="parent"
-                android:layout_marginRight="8dp" />
+                card_view:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView_Status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:text="Status: Pending"
                 android:textSize="16dp"
                 card_view:layout_constraintEnd_toEndOf="@+id/textView_title"
-                card_view:layout_constraintHorizontal_bias="0.109"
+                card_view:layout_constraintHorizontal_bias="0.0"
                 card_view:layout_constraintStart_toStartOf="@+id/textView_title"
-                card_view:layout_constraintTop_toBottomOf="@+id/textView_title"
-                android:layout_marginLeft="8dp" />
+                card_view:layout_constraintTop_toBottomOf="@+id/textView_title" />
 
             <TextView
                 android:id="@+id/textView_Date"

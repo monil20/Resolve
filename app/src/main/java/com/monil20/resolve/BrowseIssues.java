@@ -178,7 +178,7 @@ public class BrowseIssues extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onInfoWindowClick(Marker marker) {
                 Intent intent = new Intent(BrowseIssues.this,SingleIssue.class);
-                intent.putExtra("userId",userId);
+                intent.putExtra("userId",uid+"");
                 intent.putExtra("issueId",marker.getTitle());
                 startActivity(intent);
             }

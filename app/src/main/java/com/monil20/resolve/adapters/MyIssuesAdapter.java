@@ -53,7 +53,7 @@ public class MyIssuesAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         Holder holder=new Holder();
         View view;
-        view = inflater.inflate(R.layout.singlelistitem, null);
+        view = inflater.inflate(R.layout.singlelistitem_mycases, null);
 
         holder.tvTitle = view.findViewById(R.id.textView_title);
         holder.tvStatus = view.findViewById(R.id.textView_Status);

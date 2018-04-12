@@ -3,6 +3,7 @@ package com.monil20.resolve.login;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,6 @@ public class SignUpFragment extends Fragment implements OnSignUpListener{
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
         service = retrofit.create(SRegister.class);
-
         return inflate;
     }
 
@@ -52,11 +52,13 @@ public class SignUpFragment extends Fragment implements OnSignUpListener{
             data.enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
+                    Log.d("XXX",response.body());
                 }
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
-
+                    Log.d("XXX",call.toString());
+                    Log.d("XXX",data.toString());
                 }
             });
         Toast.makeText(getContext(),"Registration Successful",Toast.LENGTH_SHORT).show();
