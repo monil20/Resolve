@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.location.LocationManager;
 import android.os.Build;
@@ -28,6 +29,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -59,8 +61,10 @@ public class SubmitIssue extends AppCompatActivity implements
     ImageView img;
     Spinner type;
     Button submit, map, closeMapDialog;
+    TextView textView, textView2, textView5;
 
-//    private TextView locinfo;
+    Typeface typeface;
+
     Marker myMarker;
     private GoogleMap mMap;
     private android.location.LocationManager locationManager;
@@ -197,7 +201,7 @@ public class SubmitIssue extends AppCompatActivity implements
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        ArrayAdapter aa = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_spinner_item,typeArr);
+        ArrayAdapter aa = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,typeArr);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         type.setAdapter(aa);
     }
@@ -211,6 +215,9 @@ public class SubmitIssue extends AppCompatActivity implements
     }
 
     private void initialize() {
+        textView = findViewById(R.id.textView);
+        textView2 = findViewById(R.id.textView2);
+        textView5 = findViewById(R.id.textView5);
         title = findViewById(R.id.title);
         desc  = findViewById(R.id.dsc);
         img = findViewById(R.id.imageView_issue);
@@ -218,6 +225,14 @@ public class SubmitIssue extends AppCompatActivity implements
         submit = findViewById(R.id.btnSubmit);
         map = findViewById(R.id.btnMap);
 
+        typeface = Typeface.createFromAsset(getApplicationContext().getAssets(),"fonts/Raleway-Regular.ttf");
+        textView.setTypeface(typeface);
+        textView2.setTypeface(typeface);
+        textView5.setTypeface(typeface);
+        title.setTypeface(typeface);
+        desc.setTypeface(typeface);
+        submit.setTypeface(typeface);
+        map.setTypeface(typeface);
     }
 
     @Override
