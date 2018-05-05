@@ -3,6 +3,7 @@ package com.monil20.resolve.adapters;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,9 +56,14 @@ public class MyIssuesAdapter extends BaseAdapter {
         View view;
         view = inflater.inflate(R.layout.singlelistitem_mycases, null);
 
+        Typeface typeface = Typeface.createFromAsset(view.getContext().getAssets(),"fonts/Raleway-Regular.ttf");
+
         holder.tvTitle = view.findViewById(R.id.textView_title);
+        holder.tvTitle.setTypeface(typeface);
         holder.tvStatus = view.findViewById(R.id.textView_Status);
+        holder.tvStatus.setTypeface(typeface);
         holder.tvDate = view.findViewById(R.id.textView_Date);
+        holder.tvDate.setTypeface(typeface);
         holder.ivImg = view.findViewById(R.id.imageView_issue);
 
         byte[] decodedBytes = Base64.decode(img.get(position), 0);

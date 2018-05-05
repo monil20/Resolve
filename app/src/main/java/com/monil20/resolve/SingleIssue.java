@@ -22,7 +22,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.monil20.resolve.adapters.CommentsListAdapter;
 import com.monil20.resolve.services.SAddComment;
@@ -75,7 +74,7 @@ public class SingleIssue extends AppCompatActivity {
         Intent intent = getIntent();
         issueId = Integer.parseInt(intent.getStringExtra("issueId"));
         userId = Integer.parseInt(intent.getStringExtra("userId"));
-        Toast.makeText(this,issueId+"",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this,issueId+"",Toast.LENGTH_SHORT).show();
 
         initialize();
 

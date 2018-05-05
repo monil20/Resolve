@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.monil20.resolve.R;
 import com.monil20.resolve.services.SLogin;
@@ -100,6 +99,6 @@ public class LoginFragment extends Fragment implements com.monil20.resolve.login
         }
         editText.setText("");
         editText2.setText("");
-        Toast.makeText(getContext(),"Enter valid credentials",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(),"Enter valid credentials",Toast.LENGTH_SHORT).show();
     }
 }

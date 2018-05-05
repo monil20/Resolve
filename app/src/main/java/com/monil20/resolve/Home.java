@@ -28,7 +28,7 @@ public class Home extends Activity implements View.OnTouchListener
         setContentView(R.layout.activity_home);
 
         userId = Integer.parseInt(getIntent().getStringExtra("userId"));
-        Toast.makeText(getApplicationContext(),userId+"", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),userId+"", Toast.LENGTH_SHORT).show();
 
         ImageView iv = findViewById (R.id.image);
         if (iv != null) {

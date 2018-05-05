@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.monil20.resolve.adapters.MyIssuesAdapter;
 import com.monil20.resolve.services.SGetMyIssues;
@@ -64,7 +63,7 @@ public class MyCases extends AppCompatActivity {
             public void onResponse(Call<String> call, Response<String> response) {
                 try {
                     JSONObject data = new JSONObject(response.body());
-                    Toast.makeText(getApplicationContext(),data.getJSONArray("data").length()+"",Toast.LENGTH_SHORT);
+//                    Toast.makeText(getApplicationContext(),data.getJSONArray("data").length()+"",Toast.LENGTH_SHORT);
                     setIssueList(data.getJSONArray("data"));
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -98,7 +97,7 @@ public class MyCases extends AppCompatActivity {
         status = new ArrayList<>();
         date = new ArrayList<>();
         try {
-            Toast.makeText(getApplicationContext(),String.valueOf(listItems.length()),Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(),String.valueOf(listItems.length()),Toast.LENGTH_SHORT).show();
             for(int i = 0; i < listItems.length(); i++){
                 if(listItems.getJSONObject(i).getInt("userId") == userId){
                     img.add(listItems.getJSONObject(i).getString("img"));
